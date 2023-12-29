@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import Countdown from "react-countdown";
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, doc, getDoc, addDoc, getDocs, setDoc } from "firebase/firestore";
 import ProgressBar from "../ProgressBar/ProgressBar"
-import logo  from "../../assets/logo.jpeg";
+import logo from "../../assets/logo.jpeg";
 
 // Injective Labs imports
 import { getInjectiveAddress } from "@injectivelabs/sdk-ts";
@@ -32,6 +32,67 @@ const db = getFirestore(app);
 
 const TokenComponent = () => {
   const [injectiveAddress, setInjectiveAddress] = useState("");
+  const [connAddrBtn, setconnAddrBtn] = useState("Connect Wallet");
+  const [percentage, setPercentage] = useState(0);
+  const [currentSales, setCurrentSales] = useState(0);
+  const [targetSale, setTargetSale] = useState(0);
+  const [totalContributors, setTotalContributors] = useState(0);
+
+  useEffect(() => {
+    connectWallet();
+    setconnAddrBtn(injectiveAddress
+      ? `${injectiveAddress.slice(0, 5)}...${injectiveAddress.slice(-3)}`
+      : "Connect Wallet");
+
+    getDBDetails();
+  }, [injectiveAddress]);
+
+  const getDBDetails = async () => {
+    const querySnapshot = await getDocs(collection(db, "transactions"));
+    querySnapshot.forEach((doc) => {
+      console.log(`${doc.id} => ${doc.data()}`);
+    });
+
+    const perRef = doc(db, "Percentage", "hNrOLob7zBdKgpIMXxBy");
+    const perSnap = await getDoc(perRef);
+
+    const targetSalesRef = doc(db, "Percentage", "XSmNQJcKeLFAnm5LHjqu");
+    const targetSalesSnap = await getDoc(targetSalesRef);
+
+    const currSalesSalesRef = doc(db, "Percentage", "BgKvr36uM8lpLjLvVYjv");
+    const currSalesSalesSnap = await getDoc(currSalesSalesRef);
+
+    const tcRef = doc(db, "Percentage", "3zhghP8JNp621r0OGdbI");
+    const tcSnap = await getDoc(tcRef);
+
+    if (perSnap.exists()) {
+      const perData = perSnap.data();
+      setPercentage(perData["progress__bar"]);
+    } else {
+      console.log("No such document!");
+    }
+
+    if (targetSalesSnap.exists()) {
+      const tsData = targetSalesSnap.data();
+      setTargetSale(tsData["target__sales"]);
+    } else {
+      console.log("No such document!");
+    }
+
+    if (currSalesSalesSnap.exists()) {
+      const csData = currSalesSalesSnap.data();
+      setCurrentSales(csData["current__sales"]);
+    } else {
+      console.log("No such document!");
+    }
+
+    if (tcSnap.exists()) {
+      const tcData = tcSnap.data();
+      setTotalContributors(tcData["total__contributors"]);
+    } else {
+      console.log("No such document!");
+    }
+  }
 
   // Add other functions for handling edit, buy, etc.
   function renderCountDown({ hours, minutes, seconds, completed }) {
@@ -63,11 +124,6 @@ const TokenComponent = () => {
     }
   }
 
-  // Formatted text for display
-  const btnText = injectiveAddress
-    ? `${injectiveAddress.slice(0, 5)}...${injectiveAddress.slice(-3)}`
-    : "Connect Wallet";
-
   // Function to connect the wallet and set addresses
   const connectWallet = async () => {
     try {
@@ -78,17 +134,6 @@ const TokenComponent = () => {
       console.error("Error connecting to the wallet:", error);
     }
   };
-
-
-  const [percentage, setPercentage] = useState(0);
-  const [currentValue, setCurrentValue] = useState(0);
-  const targetValue = 42000;
-
-  useEffect(() => {
-    const percentageOfTarget = (currentValue / targetValue) * 100;
-    setPercentage(percentageOfTarget);
-  }, [currentValue, targetValue]);
-
 
   // used to send assets from one address to another
   const buyDGNZToken = async ({
@@ -119,8 +164,8 @@ const TokenComponent = () => {
         new Error(error.message)
       );
     } finally {
-      setCurrentValue((prev) => prev + 10)
-      const newPercentage = (currentValue / targetValue) * 100;
+      setCurrentSales((prev) => prev + 10)
+      const newPercentage = (currentSales / targetSale) * 100;
       setPercentage(newPercentage > 100 ? 100 : newPercentage);
 
       try {
@@ -130,14 +175,20 @@ const TokenComponent = () => {
           address: injectiveAddress,
           time: Date.now().toLocaleString()
         });
+
+
+        // Add a new document in collection "cities"
+        await setDoc(doc(db, "Percentage", "hNrOLob7zBdKgpIMXxBy"), {
+          "progress__bar": percentage
+        });
+        await setDoc(doc(db, "Percentage", "BgKvr36uM8lpLjLvVYjv"), {
+          "current__sales": currentSales
+        });
       } catch (e) {
         console.error("Error adding document: ", e);
       }
     }
   }
-
-
-  <ProgressBar percentage={percentage} />
 
   // Component JSX
   return (
@@ -145,8 +196,7 @@ const TokenComponent = () => {
       <button
         onClick={connectWallet}
         className="mt-4 bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded-full transition duration-300"
-      >
-        {btnText}
+      >       {connAddrBtn}
       </button>
 
       <div className="p-6 m-4 border rounded-xl">
@@ -159,7 +209,7 @@ const TokenComponent = () => {
               <h2 className="text-2xl font-medium">Injective Degens</h2>
             </div>
           </div>
-          <Countdown date={new Date("2023-12-28").getTime() + 86400000} renderer={renderCountDown} />
+          <Countdown date={new Date("2023-12-29").getTime() + 86400000} renderer={renderCountDown} />
         </div>
 
         <div className="flex justify-between items-start my-4 max-sm:block">
@@ -194,7 +244,7 @@ const TokenComponent = () => {
             <h4 className="text-lg underline font-semibold mb-2 text-center">Purchase Details</h4>
             <p><strong>Minimum Buy:</strong> 0.27 INJ</p>
             <p><strong>Maximum Buy:</strong> 2.68 INJ</p>
-            <p><strong>Total Contributors:</strong></p>
+            <p><strong>Total Contributors: {totalContributors} </strong></p>
           </div>
         </div>
 
