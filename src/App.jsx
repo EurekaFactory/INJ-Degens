@@ -6,7 +6,7 @@ function App() {
 
   return (
     <>
-      {/* <ConnectWallet /> */}
+      <ConnectWallet />
       <TokenComponent />
     </>
   )
