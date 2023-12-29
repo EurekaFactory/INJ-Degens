@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Countdown from "react-countdown";
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { collection, doc, getDoc, addDoc, getDocs, setDoc } from "firebase/firestore";
+import { collection, doc, getDoc, addDoc, setDoc } from "firebase/firestore";
 import ProgressBar from "../ProgressBar/ProgressBar"
 import logo from "../../assets/logo.jpeg";
 
@@ -13,18 +13,7 @@ import { Web3Exception } from "@injectivelabs/exceptions";
 import { MsgSend } from '@injectivelabs/sdk-ts'
 import { BigNumberInBase } from '@injectivelabs/utils'
 
-import { getAddresses, msgBroadcastClient } from "../../services/wallet";
-
-const firebaseConfig = {
-  // FIREBASE_CONFIGURATION
-  apiKey: "AIzaSyDi6IhYhsmhpS0Tiusd90r7V2XgK_-lofc",
-  authDomain: "inj-degens.firebaseapp.com",
-  projectId: "inj-degens",
-  storageBucket: "inj-degens.appspot.com",
-  messagingSenderId: "1049321045962",
-  appId: "1:1049321045962:web:60072976707ac52b9d9933",
-  measurementId: "G-WDPH9VNVQV"
-};
+import { getAddresses, msgBroadcastClient, firebaseConfig, tokenAddr, endTime, startTime } from "../../services/wallet";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -37,6 +26,20 @@ const TokenComponent = () => {
   const [currentSales, setCurrentSales] = useState(0);
   const [targetSale, setTargetSale] = useState(0);
   const [totalContributors, setTotalContributors] = useState(0);
+  const [tokenAmount, setInputValue] = useState("");
+
+  const handleInputChange = (event) => {
+    const value = event.target.value;
+
+    // Check if the input is either empty, a floating point number, or a number with a trailing decimal
+    if (value === '' || /^-?\d+(\.\d*)?$/.test(value)) {
+      // Update the state/input field with the new value
+      setInputValue(value);
+    } else {
+      // If it's not a valid number, handle as needed, e.g., show an error message
+      alert("Please enter a valid floating point number.");
+    }
+  };
 
   useEffect(() => {
     connectWallet();
@@ -48,11 +51,6 @@ const TokenComponent = () => {
   }, [injectiveAddress]);
 
   const getDBDetails = async () => {
-    const querySnapshot = await getDocs(collection(db, "transactions"));
-    querySnapshot.forEach((doc) => {
-      console.log(`${doc.id} => ${doc.data()}`);
-    });
-
     const perRef = doc(db, "Percentage", "hNrOLob7zBdKgpIMXxBy");
     const perSnap = await getDoc(perRef);
 
@@ -155,10 +153,14 @@ const TokenComponent = () => {
         dstInjectiveAddress: recipient,
       });
 
+      console.log(msg)
+
       tnxHash = await msgBroadcastClient.broadcast({
         injectiveAddress: sender,
         msgs: msg
       })
+
+      console.log(tnxHash)
     } catch (error) {
       throw new Web3Exception(
         new Error(error.message)
@@ -168,10 +170,12 @@ const TokenComponent = () => {
       const newPercentage = (currentSales / targetSale) * 100;
       setPercentage(newPercentage > 100 ? 100 : newPercentage);
 
+      setTotalContributors((prev) => prev + 1);
+
       try {
-        await addDoc(collection(db, "users"), {
-          amount: "Ada",
-          tnxhash: tnxHash,
+        await addDoc(collection(db, "transactions"), {
+          amount: tokenAmount,
+          tnxhash: tnxHash["txhash"],
           address: injectiveAddress,
           time: Date.now().toLocaleString()
         });
@@ -184,6 +188,12 @@ const TokenComponent = () => {
         await setDoc(doc(db, "Percentage", "BgKvr36uM8lpLjLvVYjv"), {
           "current__sales": currentSales
         });
+
+        await setDoc(doc(db, "Percentage", "3zhghP8JNp621r0OGdbI"), {
+          "total__contributors": totalContributors
+        });
+
+        alert("Transaction successful");
       } catch (e) {
         console.error("Error adding document: ", e);
       }
@@ -209,19 +219,22 @@ const TokenComponent = () => {
               <h2 className="text-2xl font-medium">Injective Degens</h2>
             </div>
           </div>
-          <Countdown date={new Date("2023-12-29").getTime() + 86400000} renderer={renderCountDown} />
+          <Countdown date={new Date(startTime).getTime() + endTime} renderer={renderCountDown} />
         </div>
 
         <div className="flex justify-between items-start my-4 max-sm:block">
           <div className="mb-5">
             <p className="p-2 max-w-[500px]">$DGNZ born  for Injective degens a community based token for Injective fan bois .</p>
           </div>
-          <form>
+          <form onSubmit={(event) => {
+            event.preventDefault();
+            buyDGNZToken({ sender: injectiveAddress, recipient: tokenAddr, send_amt: tokenAmount, denom: "inj" })
+          }}>
             <div className="flex flex-col space-y-2">
               <input type="text" id="" className=" w-full rounded-lg bg-yellow-100 p-2 text-sm text-black focus:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-500"
-                placeholder="Enter $DGNZ amount" required />
+                placeholder="Enter $DGNZ amount" required value={tokenAmount}
+                onChange={handleInputChange} />
               <button type="submit"
-                onClick={() => buyDGNZToken({ sender: "", recipient: "", send_amt: "", denom: "inj" })}
                 className="bg-yellow-400 hover:bg-yellow-500 text-black py-1 px-3 rounded-lg"
               >
                 Buy $DGNZ
@@ -236,8 +249,8 @@ const TokenComponent = () => {
             <h4 className="text-lg text-center font-semibold mb-2 underline">Token Details</h4>
             <p><strong>Total Supply:</strong> 21,000,000,000 $DGNZ</p>
             <p><strong>Supply in Presale:</strong> 40% </p>
-            <p><strong>Soft Cap:</strong> $DGNZ </p>
-            <p><strong>Hard Cap:</strong> $DGNZ </p>
+            <p><strong>Soft Cap:</strong> 100 INJ </p>
+            <p><strong>Hard Cap:</strong> 150 INJ </p>
           </div>
 
           <div className="m-2 text-left max-md:text-center max-sm:text-center border rounded-xl p-2">
