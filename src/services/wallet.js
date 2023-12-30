@@ -7,11 +7,10 @@ import { Network } from "@injectivelabs/networks";
 
 // Initialize wallet strategy outside the component to avoid re-creation on each render
 export const walletStrategy = new WalletStrategy({
-  chainId: ChainId.Testnet,
+  chainId: ChainId.Mainnet,
   ethereumOptions: {
-    ethereumChainId: EthereumChainId.Goerli,
+    ethereumChainId: EthereumChainId.Mainnet,
   },
-  // wallet: Wallet.Keplr
 });
 
 
