@@ -124,6 +124,10 @@ const TokenComponent = () => {
 
   // Function to connect the wallet and set addresses
   const connectWallet = async () => {
+    if (!window.ethereum) {
+      alert('Metamask extension not installed')
+    }
+
     try {
       const [address] = await getAddresses();
       const injectiveAddr = getInjectiveAddress(address);
