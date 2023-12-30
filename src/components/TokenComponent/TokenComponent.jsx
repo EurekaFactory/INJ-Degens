@@ -43,7 +43,6 @@ const TokenComponent = () => {
   };
 
   useEffect(() => {
-    connectWallet();
     setconnAddrBtn(injectiveAddress
       ? `${injectiveAddress.slice(0, 5)}...${injectiveAddress.slice(-3)}`
       : "Connect Wallet");
