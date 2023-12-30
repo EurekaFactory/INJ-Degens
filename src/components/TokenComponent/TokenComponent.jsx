@@ -99,7 +99,7 @@ const TokenComponent = () => {
     const labelStyle = "text-xs"; // Smaller font for labels
 
     if (completed) {
-      return <div className={countDownStyle}><span className="text-xl font-bold text-yellow-200 ">Private Sales is over!!</span></div>;
+      return <div className={countDownStyle}><span className="text-xl font-bold text-yellow-200 ">Degens will Degen</span></div>;
     } else {
       return (
         <div className="flex flex-row space-x-1 text-yellow-200 text-center">
