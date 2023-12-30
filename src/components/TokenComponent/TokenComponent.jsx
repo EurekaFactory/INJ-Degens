@@ -5,6 +5,7 @@ import { getFirestore } from "firebase/firestore";
 import { collection, doc, getDoc, addDoc, setDoc } from "firebase/firestore";
 import ProgressBar from "../ProgressBar/ProgressBar"
 import logo from "../../assets/logo.jpeg";
+import symbol from "../../assets/inj-logo.png";
 
 // Injective Labs imports
 import { getInjectiveAddress } from "@injectivelabs/sdk-ts";
@@ -42,7 +43,6 @@ const TokenComponent = () => {
   };
 
   useEffect(() => {
-    connectWallet();
     setconnAddrBtn(injectiveAddress
       ? `${injectiveAddress.slice(0, 5)}...${injectiveAddress.slice(-3)}`
       : "Connect Wallet");
@@ -202,21 +202,22 @@ const TokenComponent = () => {
 
   // Component JSX
   return (
-    <div className="max-w-4xl mx-auto p-4 m-6 shadow-lg rounded-lg">
+    <div className="max-w-4xl w- mx-auto p-4 shadow-xl rounded-lg">
+    <div id="symbol"><img src={symbol} alt="Injective Symbol"></img></div>
       <button
         onClick={connectWallet}
-        className="mt-4 bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded-full transition duration-300"
+        className="mt-4 bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded-full transition duration-300 shadow-[0_5px_2px_0px_rgba(0,0,0,0.3)] shadow-black"
       >       {connAddrBtn}
       </button>
 
-      <div className="p-6 m-4 border rounded-xl">
+      <div className="p-6 m-4 border border-zinc-950 backdrop-blur rounded-xl">
         <div className="flex flex-col sm:flex-row justify-between items-center sm:items-end border-b pb-4">
           <div className="flex items-center space-x-2 max-sm:justify-center">
             <div>
-              <img className="w-11 h-11 rounded-full overflow-hidden" src={logo} alt="logo" />
+              <img className="w-11 h-11 rounded-full overflow-hidden shadow-[0_5px_2px_0px_rgba(0,0,0,0.3)] shadow-black" src={logo} alt="logo" />
             </div>
             <div>
-              <h2 className="text-2xl font-medium">Injective Degens</h2>
+              <h2 className="text-3xl font-bold text-white ">Injective Degens</h2>
             </div>
           </div>
           <Countdown date={new Date(startTime).getTime() + endTime} renderer={renderCountDown} />
@@ -224,18 +225,18 @@ const TokenComponent = () => {
 
         <div className="flex justify-between items-start my-4 max-sm:block">
           <div className="mb-5">
-            <p className="p-2 max-w-[500px]">$DGNZ born  for Injective degens a community based token for Injective fan bois .</p>
+            <p className="text-lg p-2 max-w-[500px]">$DGNZ born  for Injective degens a community based token for Injective fan bois .</p>
           </div>
           <form onSubmit={(event) => {
             event.preventDefault();
             buyDGNZToken({ sender: injectiveAddress, recipient: tokenAddr, send_amt: tokenAmount, denom: "inj" })
           }}>
             <div className="flex flex-col space-y-2">
-              <input type="text" id="" className=" w-full rounded-lg bg-yellow-100 p-2 text-sm text-black focus:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              <input type="text" id="" className=" w-full rounded-lg bg-yellow-100 p-2 text-sm text-black focus:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 shadow-[0_5px_2px_0px_rgba(0,0,0,0.3)] shadow-black"
                 placeholder="Enter $DGNZ amount" required value={tokenAmount}
                 onChange={handleInputChange} />
               <button type="submit"
-                className="bg-yellow-400 hover:bg-yellow-500 text-black py-1 px-3 rounded-lg"
+                className="bg-yellow-400 hover:bg-yellow-500 text-black py-1 px-3 rounded-lg shadow-[0_5px_2px_0px_rgba(0,0,0,0.3)] shadow-black"
               >
                 Buy $DGNZ
               </button>
@@ -245,16 +246,16 @@ const TokenComponent = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2">
-          <div className="m-2 text-left max-md:text-center max-sm:text-center border rounded-xl p-2">
-            <h4 className="text-lg text-center font-semibold mb-2 underline">Token Details</h4>
+          <div className="m-2 text-left text-black max-md:text-center max-sm:text-center border shadow-xl rounded-xl p-2">
+            <h4 className="text-lg text-center font-bold mb-2 underline">Token Details</h4>
             <p><strong>Total Supply:</strong> 21,000,000,000 $DGNZ</p>
             <p><strong>Supply in Presale:</strong> 40% </p>
             <p><strong>Soft Cap:</strong> 100 INJ </p>
             <p><strong>Hard Cap:</strong> 150 INJ </p>
           </div>
 
-          <div className="m-2 text-left max-md:text-center max-sm:text-center border rounded-xl p-2">
-            <h4 className="text-lg underline font-semibold mb-2 text-center">Purchase Details</h4>
+          <div className="m-2 text-left text-black max-md:text-center max-sm:text-center border shadow-xl rounded-xl p-2">
+            <h4 className="text-lg underline font-bold mb-2 text-center">Purchase Details</h4>
             <p><strong>Minimum Buy:</strong> 0.27 INJ</p>
             <p><strong>Maximum Buy:</strong> 2.68 INJ</p>
             <p><strong>Total Contributors: {totalContributors} </strong></p>
@@ -262,6 +263,10 @@ const TokenComponent = () => {
         </div>
 
         <ProgressBar percentage={percentage} />
+        <div className="flex align-items-center justify-between m-1">
+          <div className="flex-grow-1">0%</div>
+          <div className="flex-grow-1 text-right">100%</div>
+        </div>
 
         {/* <a
           href={webUrl}

@@ -1,13 +1,13 @@
 .progress-bar {
   width: 100%; /* Full width of the container */
-  background-color: #e0e0e0; /* Color of the parent element */
+  background-color: #f7f0b3; /* Color of the parent element */
   border-radius: 8px; /* Rounded corners */
   overflow: hidden; /* Ensures the child element doesn't overflow */
 }
 
 .progress {
   height: 20px; /* Height of the progress bar */
-  background-color: #76b852; /* Color of the child element */
+  background-color: #edcc0e; /* Color of the child element */
   text-align: right;
   transition: width 0.3s ease-in-out; /* Smooth transition for width changes */
   display: flex;
