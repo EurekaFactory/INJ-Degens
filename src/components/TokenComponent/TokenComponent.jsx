@@ -94,34 +94,34 @@ const TokenComponent = () => {
   }
 
   // Add other functions for handling edit, buy, etc.
-  function renderCountDown({ hours, minutes, seconds, completed }) {
-    const countDownStyle = "flex flex-col items-center justify-center text-sm"; // Consistent text size and alignment
-    const numberStyle = "font-bold text-lg"; // Larger, bold font for numbers
-    const labelStyle = "text-xs"; // Smaller font for labels
+  // function renderCountDown({ hours, minutes, seconds, completed }) {
+  //   const countDownStyle = "flex flex-col items-center justify-center text-sm"; // Consistent text size and alignment
+  //   const numberStyle = "font-bold text-lg"; // Larger, bold font for numbers
+  //   const labelStyle = "text-xs"; // Smaller font for labels
 
-    if (completed) {
-      return <div className={countDownStyle}><span className="text-xl font-bold text-yellow-200 ">Degens will Degen</span></div>;
-    } else {
-      return (
-        <div className="flex flex-row space-x-1 text-yellow-200 text-center">
-          <div className={countDownStyle}>
-            <div className={numberStyle}>{hours}</div>
-            <div className={labelStyle}>Hours</div>
-          </div>
-          <span>:</span>
-          <div className={countDownStyle}>
-            <div className={numberStyle}>{minutes}</div>
-            <div className={labelStyle}>Minutes</div>
-          </div>
-          <span>:</span>
-          <div className={countDownStyle}>
-            <div className={numberStyle}>{seconds}</div>
-            <div className={labelStyle}>Seconds</div>
-          </div>
-        </div>
-      );
-    }
-  }
+  //   if (completed) {
+  //     return <div className={countDownStyle}></div>;
+  //   } else {
+  //     return (
+  //       <div className="flex flex-row space-x-1 text-yellow-200 text-center">
+  //         <div className={countDownStyle}>
+  //           <div className={numberStyle}>{hours}</div>
+  //           <div className={labelStyle}>Hours</div>
+  //         </div>
+  //         <span>:</span>
+  //         <div className={countDownStyle}>
+  //           <div className={numberStyle}>{minutes}</div>
+  //           <div className={labelStyle}>Minutes</div>
+  //         </div>
+  //         <span>:</span>
+  //         <div className={countDownStyle}>
+  //           <div className={numberStyle}>{seconds}</div>
+  //           <div className={labelStyle}>Seconds</div>
+  //         </div>
+  //       </div>
+  //     );
+  //   }
+  // }
 
   // Function to connect the wallet and set addresses
   const connectWallet = async () => {
