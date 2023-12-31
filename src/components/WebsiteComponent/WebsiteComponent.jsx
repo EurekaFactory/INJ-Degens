@@ -117,7 +117,7 @@ const WebsiteComponent = () => {
         </div>
       </main>
       <footer>
-      <p class="copyright">&copy; INJ-$DGNZ 2023</p>
+      <p className="copyright">&copy; INJ-$DGNZ 2023</p>
       </footer>
     </div>
   );
