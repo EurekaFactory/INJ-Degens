@@ -7,6 +7,7 @@ import ProgressBar from "../ProgressBar/ProgressBar"
 import logo from "../../assets/logo.jpeg";
 import symbol from "../../assets/inj-logo.png";
 
+
 // Injective Labs imports
 import { getInjectiveAddress } from "@injectivelabs/sdk-ts";
 import { Web3Exception } from "@injectivelabs/exceptions";
@@ -38,7 +39,7 @@ const TokenComponent = () => {
       setInputValue(value);
     } else {
       // If it's not a valid number, handle as needed, e.g., show an error message
-      alert("Please enter a valid floating point number.");
+      alert("Please enter a valid $DGNZ amount");
     }
   };
 
@@ -206,50 +207,53 @@ const TokenComponent = () => {
 
   // Component JSX
   return (
-    <div className="max-w-4xl w- mx-auto p-4 shadow-xl rounded-lg">
+    <div className="symbol max-w-4xl w- mx-auto p-4 shadow-xl rounded-lg">
     <div id="symbol"><img src={symbol} alt="Injective Symbol"></img></div>
       <button
         onClick={connectWallet}
-        className="mt-4 bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded-full transition duration-300 shadow-[0_5px_2px_0px_rgba(0,0,0,0.3)] shadow-black"
+        className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded-full transition duration-300 shadow-[0_5px_2px_0px_rgba(0,0,0,0.3)] shadow-black"
       >       {connAddrBtn}
       </button>
 
-      <div className="p-6 m-4 border border-zinc-950 backdrop-blur rounded-xl">
-        <div className="flex flex-col sm:flex-row justify-between items-center sm:items-end border-b pb-4">
-          <div className="flex items-center space-x-2 max-sm:justify-center">
+      <div className="p-[0px_15px_15px] m-4 border border-zinc-950 backdrop-blur rounded-xl">
+        <div className="flex flex-col sm:flex-row justify-center items-center sm:items-end border-b border-b-black pb-4">
+          <div className="flex flex-col items-center space-x-2 max-sm:justify-center">
             <div>
-              <img className="w-11 h-11 rounded-full overflow-hidden shadow-[0_5px_2px_0px_rgba(0,0,0,0.3)] shadow-black" src={logo} alt="logo" />
+              <img className="w-[200px] h-auto m-3 rounded-full overflow-hidden shadow-[0_5px_2px_0px_rgba(0,0,0,0.3)] shadow-black" src={logo} alt="logo" />
             </div>
             <div>
-              <h2 className="text-3xl font-bold text-white ">Injective Degens</h2>
+              <h2 className="text-3xl font-bold">Injective Degens</h2>
             </div>
           </div>
           <Countdown date={new Date(startTime).getTime() + endTime} renderer={renderCountDown} />
         </div>
 
-        <div className="flex justify-between items-start my-4 max-sm:block">
-          <div className="mb-5">
-            <p className="text-lg p-2 max-w-[500px]">$DGNZ born  for Injective degens a community based token for Injective fan bois .</p>
+        <div className="flex justify-center items-start my-4 max-sm:block">
+          <div className="mb-3">
+            <p className="text-xl font-bold p-2 max-w-[500px]">$DGNZ born  for Injective degens a community based token for Injective fan bois .</p>
           </div>
-          <form onSubmit={(event) => {
-            event.preventDefault();
-            buyDGNZToken({ sender: injectiveAddress, recipient: tokenAddr, send_amt: tokenAmount, denom: "inj" })
-          }}>
-            <div className="flex flex-col space-y-2">
-              <input type="text" id="" className=" w-full rounded-lg bg-yellow-100 p-2 text-sm text-black focus:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 shadow-[0_5px_2px_0px_rgba(0,0,0,0.3)] shadow-black"
-                placeholder="Enter $DGNZ amount" required value={tokenAmount}
-                onChange={handleInputChange} />
-              <button type="submit"
-                className="bg-yellow-400 hover:bg-yellow-500 text-black py-1 px-3 rounded-lg shadow-[0_5px_2px_0px_rgba(0,0,0,0.3)] shadow-black"
-              >
-                Buy $DGNZ
-              </button>
-
-            </div>
-          </form>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="m-5">
+          <form onSubmit={(event) => {
+              event.preventDefault();
+              buyDGNZToken({ sender: injectiveAddress, recipient: tokenAddr, send_amt: tokenAmount, denom: "inj" })
+            }}>
+              <div className="flex flex-col space-y-2 border-b pb-6">
+                <input type="text" id="" className=" w-full rounded-lg bg-yellow-100 p-2 text-sm text-black focus:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 shadow-[0_5px_2px_0px_rgba(0,0,0,0.3)] shadow-black"
+                  placeholder="Enter $DGNZ amount" required value={tokenAmount}
+                  onChange={handleInputChange} />
+                <button type="submit"
+                  className="bg-yellow-400 hover:bg-yellow-500 text-black border-b py-1 px-3 w-full rounded-lg shadow-[0_5px_2px_0px_rgba(0,0,0,0.3)] shadow-black"
+                >
+                  Buy $DGNZ
+                </button>
+
+              </div>
+            </form>
+        </div>
+
+        {/* <div className="grid grid-cols-1 md:grid-cols-2">
           <div className="m-2 text-left text-black max-md:text-center max-sm:text-center border shadow-xl rounded-xl p-2">
             <h4 className="text-lg text-center font-bold mb-2 underline">Token Details</h4>
             <p><strong>Total Supply:</strong> 21,000,000,000 $DGNZ</p>
@@ -264,21 +268,9 @@ const TokenComponent = () => {
             <p><strong>Maximum Buy:</strong> 2.68 INJ</p>
             <p><strong>Total Contributors: {totalContributors} </strong></p>
           </div>
-        </div>
+        </div> */}
 
         <ProgressBar percentage={percentage} />
-        <div className="flex align-items-center justify-between m-1">
-          <div className="flex-grow-1">0%</div>
-          <div className="flex-grow-1 text-right">100%</div>
-        </div>
-
-        {/* <a
-          href={webUrl}
-          target="_blank"
-          className="block text-center text-yellow-400 hover:underline mt-5"
-          rel="noreferrer">
-          Visit Website
-        </a> */}
       </div>
     </div>
   );
