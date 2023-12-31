@@ -1,7 +1,7 @@
 import './App.css'
 import TokenComponent from './components/TokenComponent/TokenComponent';
 import { Routes, Route } from 'react-router-dom';
-import WebsiteComponent from './components/WebsiteComponent/websiteComponent';
+import WebsiteComponent from './components/WebsiteComponent/WebsiteComponent';
 
 function App() {
 
