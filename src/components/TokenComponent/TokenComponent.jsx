@@ -44,7 +44,6 @@ const TokenComponent = () => {
   };
 
   useEffect(() => {
-    connectWallet();
     setconnAddrBtn(injectiveAddress
       ? `${injectiveAddress.slice(0, 5)}...${injectiveAddress.slice(-3)}`
       : "Connect Wallet");
@@ -101,7 +100,7 @@ const TokenComponent = () => {
     const labelStyle = "text-xs"; // Smaller font for labels
 
     if (completed) {
-      return <div className={countDownStyle}><span className="text-xl font-bold text-yellow-200 ">Degens will Degen!</span></div>;
+      return <div className={countDownStyle}><span className="text-xl font-bold text-yellow-200 ">Degens will Degen</span></div>;
     } else {
       return (
         <div className="flex flex-row space-x-1 text-yellow-200 text-center">
@@ -126,6 +125,10 @@ const TokenComponent = () => {
 
   // Function to connect the wallet and set addresses
   const connectWallet = async () => {
+    if (!window.ethereum) {
+      alert('Metamask extension not installed')
+    }
+
     try {
       const [address] = await getAddresses();
       const injectiveAddr = getInjectiveAddress(address);
@@ -268,6 +271,10 @@ const TokenComponent = () => {
         </div> */}
 
         <ProgressBar percentage={percentage} />
+        <div className="flex align-items-center justify-between m-1">
+          <div className="flex-grow-1">0%</div>
+          <div className="flex-grow-1 text-right">100%</div>
+        </div>
 
       </div>
     </div>
