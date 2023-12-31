@@ -27,16 +27,16 @@ const WebsiteComponent = () => {
 
       <main className="text-2xl ">
 {/* Hero Section */}
-        <div class="flex flex-col-reverse lg:flex-row justify-between items-center w-full md:pt-8 lg:pt-12 xl:pt-16">
-          <div class="flex flex-col items-center lg:items-start justify-start gap-8 m-[40px_0px]">
-            <h1 class="font-bold white-stroke-2px lg:white-stroke-3px text-7xl md:text-6xl lg:text-9xl xl:text-8xl leading-none">INJECTIVE DEGENS</h1>
-            <h3 class=" text-3xl md:text-4xl lg:text-5xl xl:text-5.5xl leading-none text-center md:text-left">DEGENS WILL DEGEN</h3>
-            <div class="flex flex-col md:flex-row gap-3 lg:gap-5 xl:gap-7 items-center mt-0 lg:mt-6 xl:mt-8">
-              <a href="https://t.me/injectiveDgnz" target="_blank" rel="noopener noreferrer" class="border-2 bg-yellow-400 hover:bg-yellow-500 text-black border-b w-full shadow-[0_5px_2px_0px_rgba(0,0,0,0.3)] shadow-black text-center text-3xl xl:text-4xl transition-all duration-500 rounded-xl lg:rounded-2xl py-2 px-6  hover:-translate-y-1">TELEGRAM</a>
-              <Link to='/project' rel="noopener noreferrer" class="border-2 border-engineer-blue bg-yellow-400 hover:bg-yellow-500 text-black shadow-[0_5px_2px_0px_rgba(0,0,0,0.3)] shadow-black text-center text-3xl xl:text-4xl transition-all duration-500 rounded-xl lg:rounded-2xl py-2 px-6 hover:-translate-y-1">BUY NOW</Link>
+        <div className="flex flex-col-reverse lg:flex-row justify-between items-center w-full md:pt-8 lg:pt-12 xl:pt-16">
+          <div className="flex flex-col items-center lg:items-start justify-start gap-8 m-[40px_0px]">
+            <h1 className="font-bold white-stroke-2px lg:white-stroke-3px text-7xl md:text-6xl lg:text-9xl xl:text-8xl leading-none">INJECTIVE DEGENS</h1>
+            <h3 className=" text-3xl md:text-4xl lg:text-5xl xl:text-5.5xl leading-none text-center md:text-left">DEGENS WILL DEGEN</h3>
+            <div className="flex flex-col md:flex-row gap-3 lg:gap-5 xl:gap-7 items-center mt-0 lg:mt-6 xl:mt-8">
+              <a href="https://t.me/injectiveDgnz" target="_blank" rel="noopener noreferrer" className="border-2 bg-yellow-400 hover:bg-yellow-500 text-black border-b w-full shadow-[0_5px_2px_0px_rgba(0,0,0,0.3)] shadow-black text-center text-3xl xl:text-4xl transition-all duration-500 rounded-xl lg:rounded-2xl py-2 px-6  hover:-translate-y-1">TELEGRAM</a>
+              <Link to='/project' rel="noopener noreferrer" className="border-2 border-engineer-blue bg-yellow-400 hover:bg-yellow-500 text-black shadow-[0_5px_2px_0px_rgba(0,0,0,0.3)] shadow-black text-center text-3xl xl:text-4xl transition-all duration-500 rounded-xl lg:rounded-2xl py-2 px-6 hover:-translate-y-1">BUY NOW</Link>
             </div>
           </div>
-          <img src={logo} alt="$DGNZ" class="w-[250px] md:w-[325px] lg:w-[375px] xl:w-[300px] 2xl:w-[500px] rounded-full overflow-hidden shadow-[0_5px_2px_0px_rgba(0,0,0,0.3)] shadow-black"></img>
+          <img src={logo} alt="$DGNZ" className="w-[250px] md:w-[325px] lg:w-[375px] xl:w-[300px] 2xl:w-[500px] rounded-full overflow-hidden shadow-[0_5px_2px_0px_rgba(0,0,0,0.3)] shadow-black"></img>
         </div>
         {/* <div id="home" className='hero m-[40px_0px]'>
           <h1 className='text-white'>Hello</h1>
