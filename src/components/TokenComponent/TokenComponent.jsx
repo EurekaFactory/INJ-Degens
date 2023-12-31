@@ -207,7 +207,7 @@ const TokenComponent = () => {
 
   // Component JSX
   return (
-    <div className="symbol max-w-4xl w- mx-auto p-4 shadow-xl rounded-lg">
+    <div className="symbol max-w-4xl w-auto p-4 max-sm:px-0 shadow-xl rounded-lg">
     <div id="symbol"><img src={symbol} alt="Injective Symbol"></img></div>
       <button
         onClick={connectWallet}
@@ -219,7 +219,7 @@ const TokenComponent = () => {
         <div className="flex flex-col sm:flex-row justify-center items-center sm:items-end border-b border-b-black pb-4">
           <div className="flex flex-col items-center space-x-2 max-sm:justify-center">
             <div>
-              <img className="w-[200px] h-auto m-3 rounded-full overflow-hidden shadow-[0_5px_2px_0px_rgba(0,0,0,0.3)] shadow-black" src={logo} alt="logo" />
+              <img className="w-[200px] max-sm:w-[150px] h-auto m-3 rounded-full overflow-hidden shadow-[0_5px_2px_0px_rgba(0,0,0,0.3)] shadow-black" src={logo} alt="logo" />
             </div>
             <div>
               <h2 className="text-3xl font-bold">Injective Degens</h2>

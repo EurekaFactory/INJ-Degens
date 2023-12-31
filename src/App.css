@@ -26,7 +26,7 @@ body {
 /* tokencomponent styling */
 #root {
   margin: auto;
-  padding: 2rem;
+  padding: 1rem;
   text-align: center;
   color: #000;
   overflow-wrap: break-word;
