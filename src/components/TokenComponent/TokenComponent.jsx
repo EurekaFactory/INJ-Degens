@@ -271,11 +271,6 @@ const TokenComponent = () => {
         </div> */}
 
         <ProgressBar percentage={percentage} />
-        <div className="flex align-items-center justify-between m-1">
-          <div className="flex-grow-1">0%</div>
-          <div className="flex-grow-1 text-right">100%</div>
-        </div>
-
       </div>
     </div>
   );
