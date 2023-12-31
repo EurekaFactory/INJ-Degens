@@ -10,11 +10,6 @@ html {
   height: 100vh;
   box-sizing: border-box;
   font-family: 'Yatra One', sans-serif;
-  /* background: rgb(174, 174, 40); */
-  /* background: rgb(53,151,200);
-  background: linear-gradient(0deg, rgb(74, 83, 16) 28%, rgba(217,226,32,1) 92%); */
-  /* background: rgb(53,151,200);
-  background: linear-gradient(0deg, rgba(53,151,200,1) 45%, rgba(32,214,226,1) 100%); */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -35,8 +30,6 @@ body {
   text-align: center;
   color: #000;
   overflow-wrap: break-word;
-  background: rgb(53,151,200);
-  background: linear-gradient(0deg, rgba(53,151,200,1) 28%, rgba(217,226,32,1) 92%);
 }
 
 #symbol {
@@ -45,6 +38,10 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: -1;
+}
+
+.symbol {
+  background: rgb(246, 245, 194);
 }
 
 img {
