@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Countdown from "react-countdown";
+// import Countdown from "react-countdown";
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { collection, doc, getDoc, addDoc, setDoc } from "firebase/firestore";
@@ -225,7 +225,7 @@ const TokenComponent = () => {
               <h2 className="text-3xl font-bold">Injective Degens</h2>
             </div>
           </div>
-          <Countdown date={new Date(startTime).getTime() + endTime} renderer={renderCountDown} />
+          {/* <Countdown date={new Date(startTime).getTime() + endTime} renderer={renderCountDown} /> */}
         </div>
 
         <div className="flex justify-center items-start my-4 max-sm:block">
