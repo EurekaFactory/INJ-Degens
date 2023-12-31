@@ -4,23 +4,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* global styling */
 html {
   margin: 0;
   height: 100vh;
   box-sizing: border-box;
   font-family: 'Yatra One', sans-serif;
-  background: rgb(53,151,200);
-  background: linear-gradient(0deg, rgba(53,151,200,1) 45%, rgba(32,214,226,1) 100%);
+  /* background: rgb(174, 174, 40); */
+  /* background: rgb(53,151,200);
+  background: linear-gradient(0deg, rgb(74, 83, 16) 28%, rgba(217,226,32,1) 92%); */
+  /* background: rgb(53,151,200);
+  background: linear-gradient(0deg, rgba(53,151,200,1) 45%, rgba(32,214,226,1) 100%); */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-#root {
-  margin: auto;
-  padding: 2rem;
-  text-align: center;
-  color: #000;
-  overflow-wrap: break-word;
 }
 
 body {
@@ -29,6 +25,18 @@ body {
   background-size: cover;
   overflow: scroll;
   color: #000;
+}
+
+
+/* tokencomponent styling */
+#root {
+  margin: auto;
+  padding: 2rem;
+  text-align: center;
+  color: #000;
+  overflow-wrap: break-word;
+  background: rgb(53,151,200);
+  background: linear-gradient(0deg, rgba(53,151,200,1) 28%, rgba(217,226,32,1) 92%);
 }
 
 #symbol {
@@ -43,7 +51,9 @@ img {
   width: 500px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
+/* websitecomponent styling */
+
+main {
+  margin: 0 5%;
 }
+
