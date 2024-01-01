@@ -15,7 +15,7 @@ import { Web3Exception } from "@injectivelabs/exceptions";
 import { MsgSend } from '@injectivelabs/sdk-ts'
 import { BigNumberInBase } from '@injectivelabs/utils'
 
-import { getAddresses, msgBroadcastClient, firebaseConfig, tokenAddr, endTime, startTime } from "../../services/wallet";
+import { getAddresses, msgBroadcastClient, firebaseConfig, tokenAddr } from "../../services/wallet";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -208,7 +208,7 @@ const TokenComponent = () => {
   // Component JSX
   return (
     <div className="symbol max-w-4xl w-auto p-4 max-sm:px-0 shadow-xl rounded-lg">
-    <div id="symbol"><img src={symbol} alt="Injective Symbol"></img></div>
+      <div id="symbol"><img src={symbol} alt="Injective Symbol"></img></div>
       <button
         onClick={connectWallet}
         className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded-full transition duration-300 shadow-[0_5px_2px_0px_rgba(0,0,0,0.3)] shadow-black"
@@ -236,21 +236,21 @@ const TokenComponent = () => {
 
         <div className="m-5">
           <form onSubmit={(event) => {
-              event.preventDefault();
-              buyDGNZToken({ sender: injectiveAddress, recipient: tokenAddr, send_amt: tokenAmount, denom: "inj" })
-            }}>
-              <div className="flex flex-col space-y-2 border-b pb-6">
-                <input type="text" id="" className=" w-full rounded-lg bg-yellow-100 p-2 text-sm text-black focus:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 shadow-[0_5px_2px_0px_rgba(0,0,0,0.3)] shadow-black"
-                  placeholder="Enter $DGNZ amount" required value={tokenAmount}
-                  onChange={handleInputChange} />
-                <button type="submit"
-                  className="bg-yellow-400 hover:bg-yellow-500 text-black border-b py-1 px-3 w-full rounded-lg shadow-[0_5px_2px_0px_rgba(0,0,0,0.3)] shadow-black"
-                >
-                  Buy $DGNZ
-                </button>
+            event.preventDefault();
+            buyDGNZToken({ sender: injectiveAddress, recipient: tokenAddr, send_amt: tokenAmount, denom: "inj" })
+          }}>
+            <div className="flex flex-col space-y-2 border-b pb-6">
+              <input type="text" id="" className=" w-full rounded-lg bg-yellow-100 p-2 text-sm text-black focus:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 shadow-[0_5px_2px_0px_rgba(0,0,0,0.3)] shadow-black"
+                placeholder="Enter $DGNZ amount" required value={tokenAmount}
+                onChange={handleInputChange} />
+              <button type="submit"
+                className="bg-yellow-400 hover:bg-yellow-500 text-black border-b py-1 px-3 w-full rounded-lg shadow-[0_5px_2px_0px_rgba(0,0,0,0.3)] shadow-black"
+              >
+                Buy $DGNZ
+              </button>
 
-              </div>
-            </form>
+            </div>
+          </form>
         </div>
 
         {/* <div className="grid grid-cols-1 md:grid-cols-2">
