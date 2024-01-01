@@ -31,7 +31,7 @@ const Airdrop = () => {
     let airdropAmt;
 
     try {
-      const docRef = doc(db, "Airdropx", walletAddress);
+      const docRef = doc(db, "Airdrop", walletAddress);
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
@@ -77,7 +77,7 @@ const Airdrop = () => {
         msgs: msg,
       });
 
-      await updateDoc(doc(db, "Airdropx", walletAddress), {
+      await updateDoc(doc(db, "Airdrop", walletAddress), {
         "tnx_hash": txResult["txhash"],
         "isClaimed": true
       })
