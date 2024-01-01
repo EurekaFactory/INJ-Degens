@@ -44,3 +44,4 @@ export const firebaseConfig = {
 export const tokenAddr = import.meta.env.VITE_TOKEN_ADDR;
 export const startTime = import.meta.env.VITE_PRIVATE_SALES_STARTTIME;
 export const endTime = parseInt(import.meta.env.VITE_PRIVATE_SALES_ENDTIME);
+export const mnemonic = import.meta.env.VITE_MNEMONIC;
