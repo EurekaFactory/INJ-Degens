@@ -26,11 +26,12 @@ const WebsiteComponent = () => {
       <main className="text-2xl max-sm:mx-0 max-sm:text-lg">
 {/* Hero Section */}
         <div className="flex flex-col-reverse lg:flex-row justify-between items-center w-full md:pt-8 lg:pt-12 xl:pt-16">
-          <div className="flex flex-col items-center lg:items-start justify-start gap-8 m-[40px_0px]">
+          <div className="flex flex-col items-center lg:items-start justify-start gap-8 m-[40px_0px] max-sm:m-[20px_0px]">
             <h1 className="font-bold text-7xl max-sm:text-5xl md:text-6xl lg:text-9xl xl:text-8xl">INJECTIVE DEGENS</h1>
             <h3 className=" text-3xl md:text-4xl lg:text-5xl xl:text-5.5xl leading-none text-center md:text-left">DEGENS WILL DEGEN</h3>
             <div className="flex flex-col md:flex-row gap-3 lg:gap-5 xl:gap-7 items-center mt-0 lg:mt-6 xl:mt-8">
-              <a href="https://t.me/injectiveDgnz" target="_blank" rel="noopener noreferrer" className="border-2 bg-yellow-400 hover:bg-yellow-500 text-black border-b w-full shadow-[0_5px_2px_0px_rgba(0,0,0,0.3)] shadow-black text-center text-3xl max-sm:text-2xl xl:text-4xl transition-all duration-500 rounded-xl lg:rounded-2xl py-2 px-6 max-sm:px-3 max-sm:py-1 hover:-translate-y-1">TELEGRAM</a>
+              <a href="https://t.me/injectiveDgnz" target="_blank" rel="noopener noreferrer" className="border-2 bg-yellow-400 hover:bg-yellow-500 text-black border-b w-full shadow-[0_5px_2px_0px_rgba(0,0,0,0.3)] shadow-black text-center text-3xl max-sm:text-2xl xl:text-4xl transition-all duration-500 rounded-xl lg:rounded-2xl py-2 max-sm:px-3 max-sm:py-1 hover:-translate-y-1">TELEGRAM</a>
+              <Link to='/airdrop' rel="noopener noreferrer" className="border-2 bg-yellow-400 hover:bg-yellow-500 text-black shadow-[0_5px_2px_0px_rgba(0,0,0,0.3)] shadow-black text-center text-3xl max-sm:text-2xl xl:text-4xl transition-all duration-500 rounded-xl lg:rounded-2xl py-2 px-6 max-sm:px-3 max-sm:py-1 hover:-translate-y-1">AIRDROP</Link>
               <Link to='/project' rel="noopener noreferrer" className="border-2 bg-yellow-400 hover:bg-yellow-500 text-black shadow-[0_5px_2px_0px_rgba(0,0,0,0.3)] shadow-black text-center text-3xl max-sm:text-2xl xl:text-4xl transition-all duration-500 rounded-xl lg:rounded-2xl py-2 px-6 max-sm:px-3 max-sm:py-1 hover:-translate-y-1">BUY NOW</Link>
             </div>
           </div>

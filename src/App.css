@@ -25,6 +25,8 @@ body {
 
 /* tokencomponent styling */
 #root {
+  display: flex;
+  justify-content: center;
   margin: auto;
   padding: 1rem;
   text-align: center;
