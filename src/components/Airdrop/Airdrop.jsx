@@ -33,6 +33,7 @@ const Airdrop = () => {
     let x = true;
     if (x) {
       alert("Airdropping will start soon...")
+      setClaimBtnEnabled(false);
       return
     }
 
