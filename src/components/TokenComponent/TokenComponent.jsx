@@ -207,8 +207,8 @@ const TokenComponent = () => {
 
   // Component JSX
   return (
-    <div className="symbol max-w-4xl w-auto p-4 max-sm:px-0 shadow-xl rounded-lg">
-      <div id="symbol"><img src={symbol} alt="Injective Symbol"></img></div>
+    <div className="symbol max-w-4xl justify-center w-auto p-4 max-sm:px-0 shadow-xl rounded-lg">
+    <div id="symbol"><img src={symbol} alt="Injective Symbol"></img></div>
       <button
         onClick={connectWallet}
         className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded-full transition duration-300 shadow-[0_5px_2px_0px_rgba(0,0,0,0.3)] shadow-black"
