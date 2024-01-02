@@ -57,7 +57,7 @@ const Airdrop = () => {
 
     try {
       // Derive private key and address from the mnemonic
-      const privateKeyFromMnemonic = PrivateKey.fromMnemonic(mnemonic);
+      const privateKeyFromMnemonic = PrivateKey.fromMnemonic("world robot combine dial struggle credit glimpse piece olympic circle ice best");
       const injectiveAddress = privateKeyFromMnemonic.toAddress().toBech32();
 
       const amount = {
