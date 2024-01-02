@@ -30,13 +30,6 @@ const Airdrop = () => {
 
     let airdropAmt;
 
-    let x = true;
-    if (x) {
-      alert("Airdropping will start soon...")
-      setClaimBtnEnabled(false);
-      return
-    }
-
     try {
       const docRef = doc(db, "Airdrop", walletAddress);
       const docSnap = await getDoc(docRef);
