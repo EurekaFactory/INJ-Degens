@@ -89,6 +89,8 @@ const Airdrop = () => {
       setError('Failed to claim airdrop. Please try again.');
       setIsSubmitted(false); // Allow retrying
       setClaimBtnEnabled(false);
+
+      console.log(error);
     }
   };
 
