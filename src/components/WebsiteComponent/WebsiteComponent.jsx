@@ -19,9 +19,13 @@ const WebsiteComponent = () => {
           </div>
 
           <div className="flex flex-row justify-between items-center max-sm:hidden lg:gap-8 md:gap-6 xl:gap-10">
-            <Link to="/project" className="underline decoration-yellow-500">
+            <a
+              href="https://coinhall.org/injective/inj16ksgpuh0gq6ucx0qw8n65ym82kkxptqs2ww6nj"
+              target="_blank"
+              className="underline decoration-yellow-500"
+            >
               Buy Now
-            </Link>
+            </a>
             <Link to="/NFTs" className="underline decoration-yellow-500">
               NFTs
             </Link>
@@ -96,13 +100,14 @@ const WebsiteComponent = () => {
               >
                 TELEGRAM
               </a>
-              <Link
-                to="/project"
+              <a
+                href="https://coinhall.org/injective/inj16ksgpuh0gq6ucx0qw8n65ym82kkxptqs2ww6nj"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="border-2 bg-yellow-400 hover:bg-yellow-500 text-black shadow-[0_5px_2px_0px_rgba(0,0,0,0.3)] shadow-black text-center text-3xl max-sm:text-2xl xl:text-4xl transition-all duration-500 rounded-xl lg:rounded-2xl py-2 px-3 max-sm:px-3 max-sm:py-1 hover:-translate-y-1"
               >
                 BUY NOW
-              </Link>
+              </a>
             </div>
           </div>
           <img
