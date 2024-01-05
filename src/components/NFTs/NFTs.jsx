@@ -165,9 +165,9 @@ const NFTs = () => {
 
         {/*Story*/}
         <section className="bg-yellow-100 p-1 rounded-xl">
-          <section className="flex justify-center m-10 p-2 border border-zinc-500 rounded-xl">
-            <div className="w-[50%]">
-              <h2 className="font-bold text-5xl p-2"> Story Of Degens </h2>
+          <section className="flex justify-center m-10 max-sm:mx-3 p-2 border border-zinc-500 rounded-xl">
+            <div className="w-[50%] max-sm:w-[80%]">
+              <h2 className="font-bold text-5xl max-sm:text-3xl p-2 max-sm:px-1 "> Story Of Degens </h2>
               <p>
                 In the world of Digitaria, there existed a magnificent city
                 called Bitville, renowned for its towering structures of
@@ -178,15 +178,15 @@ const NFTs = () => {
             </div>
           </section>
 
-          <section className="flex justify-center items-center gap-20 m-10 p-2 border border-zinc-500 rounded-xl">
+          <section className="flex justify-center max-sm:flex-col items-center gap-20 max-sm:gap-10 m-10 max-sm:m-3 p-2 border border-zinc-500 rounded-xl">
             <div>
               <img
                 src={Story}
                 alt="Degenz NFT image"
-                className="anime-l w-[400px]"
+                className="w-[400px] p-2"
               ></img>
             </div>
-            <div className="w-[50%]">
+            <div className="w-[50%] max-sm:w-[80%]">
               <p>
                 In the digital realm of Bitville, the Degens lived in a world of
                 technological marvels, with towering digital screens and
@@ -208,23 +208,23 @@ const NFTs = () => {
 
           {/*Tokenomics*/}
           <section>
-            <div className="m-10 p-2 border border-zinc-500 rounded-xl">
+            <div className="m-10 max-sm:m-3 p-2 border border-zinc-500 rounded-xl">
               <div className="flex justify-center items-center m-5 gap-20 ">
                 <div>
-                  <h2 className="font-bold p-2 text-5xl">Degens Token</h2>
-                  <p className="text-[1.2rem]">Degens Tokenomics</p>
+                  <h2 className="font-bold p-2 text-5xl max-sm:text-3xl">Degens Token</h2>
+                  <p className="text-[1.2rem] max-sm:text-[1rem]">Degens Tokenomics</p>
                 </div>
               </div>
 
-              <div className="flex justify-center items-center gap-20">
-                <div className="w-[50%] text-left">
-                  <p>NAME:-------------------- INJECTIVEDGEN</p>
+              <div className="flex justify-center max-sm:flex-col items-center gap-20 max-sm:gap-10 m-10 max-sm:m-3 p-2">
+                <div className="w-[50%] max-sm:w-[100%] max-sm:text-sm text-left">
+                  <p>NAME:--------- INJECTIVEDGEN</p>
                   <p>TYPE:-------------------- CW20</p>
                   <p>PLATFORM:---------------- INJ</p>
-                  <p>TOTAL SUPPLY:------------ 21,000,000,000</p>
-                  <p>SYMBOL:------------------ $DGNZ</p>
+                  <p>TOTAL SUPPLY:- 21,000,000,000</p>
+                  <p>SYMBOL:--------------- $DGNZ</p>
                 </div>
-                <div className="pb-5">
+                <div className="">
                   <img
                     src={Token}
                     alt="Degenz NFT image"
@@ -236,9 +236,9 @@ const NFTs = () => {
           </section>
 
           {/*Story*/}
-          <section className="flex justify-center items-center gap-20 m-10 p-2 border border-zinc-500 rounded-xl">
+          <section className="flex justify-center items-center gap-20 m-10 max-sm:m-3 p-2 border border-zinc-500 rounded-xl">
             <div>
-              <h2 className="font-bold p2 text-5xl">DAO Based Community</h2>
+              <h2 className="font-bold p2 text-5xl max-sm:text-3xl">DAO Based Community</h2>
               <p>
               The Injective Degens Society aims to be the one of the earliest and strongest DAO on the INJ blockchain. We seek to empower our members with knowledge on not only the INJ blockchain but cryptocurrency and the future of Web3 as a whole. As the INJ blockchain develops, we are open to the DAOs suggestions on where to take this project. 
               </p>
@@ -247,7 +247,7 @@ const NFTs = () => {
                   href="https://t.me/injectiveDgnz"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="border-2 bg-yellow-400 hover:bg-yellow-500 text-black border-b max-sm:w-full shadow-[0_5px_2px_0px_rgba(0,0,0,0.3)] shadow-black text-center text-[1.2rem] max-sm:text-2xl  transition-all duration-500 rounded-xl lg:rounded-2xl py-2 px-3 max-sm:px-3 max-sm:py-1 hover:-translate-y-1"
+                  className="border-2 bg-yellow-400 hover:bg-yellow-500 text-black border-b max-sm:w-full shadow-[0_5px_2px_0px_rgba(0,0,0,0.3)] shadow-black text-center text-[1.2rem] max-sm:text-  transition-all duration-500 rounded-xl lg:rounded-2xl py-2 px-3 max-sm:px-3 max-sm:py-1 hover:-translate-y-1"
                 >
                   Join the Community
                 </a>
