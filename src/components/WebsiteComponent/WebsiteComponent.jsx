@@ -8,14 +8,14 @@ const WebsiteComponent = () => {
         {/* Header Section*/}
         <nav className="w-full flex-row justify-between items-center md:flex">
           <div className="flex flex-row max-sm:justify-center max-md:justify-center items-center gap-5 lg:gap-8 xl:gap-10 text-2xl xl:text-3xl">
-            <a href="#home">
+            <a href="https://injectivedegens.xyz">
               <img
                 src={logo}
                 alt="logo"
                 className="w-[40px] my-2 rounded-full overflow-hidden shadow-[0_5px_2px_0px_rgba(0,0,0,0.3)] shadow-black"
               ></img>
             </a>
-            <p>Injective Degens</p>
+            <p><a href="https://injectivedegens.xyz">Injective Degens</a></p>
           </div>
 
           <div className="flex flex-row justify-between items-center max-sm:hidden lg:gap-8 md:gap-6 xl:gap-10">
@@ -113,7 +113,7 @@ const WebsiteComponent = () => {
           <img
             src={logo}
             alt="$DGNZ"
-            className="w-[250px] max-sm:w-[200px] md:w-[325px] lg:w-[375px] xl:w-[300px] 2xl:w-[500px] rounded-full overflow-hidden shadow-[0_5px_2px_0px_rgba(0,0,0,0.3)] shadow-black"
+            className="animate-[spin_6s_linear_infinite] w-[250px] max-sm:w-[200px] md:w-[325px] lg:w-[375px] xl:w-[300px] 2xl:w-[500px] rounded-full overflow-hidden shadow-[0_5px_2px_0px_rgba(0,0,0,0.3)] shadow-black"
           ></img>
         </div>
 
