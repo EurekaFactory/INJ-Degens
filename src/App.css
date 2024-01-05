@@ -56,3 +56,64 @@ main {
   margin: 0 5%;
 }
 
+
+/*Animations*/
+/*top*/
+.anime-t {
+  animation: t 0.7s ease-in;
+}
+
+@keyframes t {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/*bottom*/
+.anime-b {
+  animation: b 0.7s ease-in;
+}
+
+@keyframes b {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* left
+.anime-l {
+  animation: l 0.7s ease-in;
+}
+
+@keyframes l {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+
+/*right*/
+/* .anime-r {
+  animation: r 0.7s ease-in;
+}
+
+@keyframes r {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}  */
+
